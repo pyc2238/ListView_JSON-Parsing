@@ -12,6 +12,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public String myJson;
     private Button menu;
     private ListView listView;
+    private TextView trueMenuName,price;
 
     public static final int REQ_NUM = 1;
     public static final int RESULT_OK = 11;
@@ -47,7 +49,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         menu = (Button)findViewById(R.id.menu);
+        trueMenuName = (TextView)findViewById(R.id.trueMenuName);
+        price = (TextView)findViewById(R.id.price);
+
         listView = (ListView)findViewById(R.id.listview);
+
         personList = new ArrayList<HashMap<String,String>>();
 
         preferences = getSharedPreferences("ip",MODE_PRIVATE);
@@ -57,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
             getData("http://"+ip+"/ajax/android.php");
         }
 
-        
+
     menu.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-            startActivity(new Intent(MainActivity.this, Pop.class));
+
             Intent intent = new Intent(MainActivity.this, Pop.class);
             intent.putExtra("message", "Hi!");
             startActivityForResult(intent, REQ_NUM);
@@ -77,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 if(data != null) {
                     String result = data.getStringExtra("result");
                     ip = result;
+
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("ip",ip);
                     editor.commit();
@@ -150,10 +157,14 @@ public class MainActivity extends AppCompatActivity {
 
                 HashMap<String,String> persons = new HashMap<>();
 
-                if(address == "true"){
+
                     persons.put(TAG_ID,id);
                     persons.put(TAG_NAME,name);
                     personList.add(persons);
+
+                    if(address == "true"){
+                        trueMenuName.setText(id);
+                        price.setText(name);
                 }
             }
 

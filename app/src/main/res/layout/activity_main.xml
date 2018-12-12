@@ -24,31 +24,50 @@
     </LinearLayout>
 
 
-    <LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical"
-app:layout_constraintTop_toBottomOf="@+id/firstView"
-tools:context="com.tistory.webnautes.listviewexample.MainActivity">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/firstView"
+        tools:context="com.tistory.webnautes.listviewexample.MainActivity"
+        tools:layout_editor_absoluteX="0dp">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/selected_item_textview"
-    android:textSize="20dp"
-    android:textColor="#000"
-    android:textStyle="bold"
-    android:gravity="right"
-    android:layout_marginEnd="15dp"
-    android:text="보근식당"/>
+        <TextView
+            android:id="@+id/selected_item_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:gravity="right"
+            android:text="보근식당"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-<ListView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/listview"/>
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="485dp"
+            android:layout_height="wrap_content"
+            android:background="#ec3c16"
+            >
+
+            <TextView
+                android:id="@+id/trueMenuName"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 
     </android.support.constraint.ConstraintLayout>

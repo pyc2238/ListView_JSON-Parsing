@@ -14,7 +14,7 @@
         android:layout_marginTop="158dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="IP" />
+         />
 
     <Button
         android:id="@+id/inputBtn"
